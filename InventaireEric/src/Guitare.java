@@ -17,6 +17,10 @@ public class Guitare {
         this.setPreferences(prefGuitare);
     }
 
+	public boolean correspond(PrefGuitare prefGuitare) {
+       return preferences.equals(prefGuitare);
+    }
+
   
     public String getNumSerie() {
 		return numSerie;
@@ -36,15 +40,6 @@ public class Guitare {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-
-
-	public boolean correspond(PrefGuitare prefGuitare) {
-    
-       if (preferences.equals(prefGuitare))
-            return true;
-    
-        return false;
-    }
 
 	public PrefGuitare getPreferences() {
 		return preferences;
