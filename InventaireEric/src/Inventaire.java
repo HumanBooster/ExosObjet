@@ -16,10 +16,15 @@ public class Inventaire {
 
 	@objid("820b0092-e6be-4d85-b6b3-735fd1d39cf1")
 	public void addGuitare(String numSerie, double prix, Fabricant fabricant,
-			String modele, Type type, Bois boisFond, Bois boisTable) {
+			String modele, Type type, Bois boisFond, Bois boisTable, int nbCordes) {
 		
 		PrefGuitare prefGuitare = new PrefGuitare(fabricant, modele, type,
-				boisFond, boisTable);
+				boisFond, boisTable, nbCordes);
+		Guitare guitare = new Guitare(numSerie, prix, prefGuitare);
+		guitares.add(guitare);
+	}
+	
+	public void addGuitare(String numSerie, double prix, PrefGuitare prefGuitare) {
 		Guitare guitare = new Guitare(numSerie, prix, prefGuitare);
 		guitares.add(guitare);
 	}

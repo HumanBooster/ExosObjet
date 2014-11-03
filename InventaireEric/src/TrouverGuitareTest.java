@@ -13,7 +13,7 @@ public class TrouverGuitareTest {
         initialiserInventaire(inventaire);
         
         PrefGuitare prefIrene = new PrefGuitare(Fabricant.FENDER,
-                "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE);
+                "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6);
         
         List<Guitare> resultats = inventaire.chercher(prefIrene);
         
@@ -35,8 +35,8 @@ public class TrouverGuitareTest {
     @objid ("e679b768-9d00-4f1e-9b19-a5736b70cdb5")
     private static void initialiserInventaire(Inventaire inventaire) {
         // Ajoute des guitares dans l’inventaire...
-    	inventaire.addGuitare("V95693", 1499.90, Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE);
-    	inventaire.addGuitare("V95683", 1399.90, Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE);
+    	inventaire.addGuitare("V95693", 1499.90, Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6);
+    	inventaire.addGuitare("V95683", 1399.90, Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6);
     }
 
 }
