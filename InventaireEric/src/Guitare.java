@@ -17,22 +17,28 @@ public class Guitare {
         this.setPreferences(prefGuitare);
     }
 
-    @objid ("cfb89fd5-48e2-433f-aa42-f6b1aa61ae9d")
+  
     public String getNumSerie() {
-        return numSerie;
-    }
+		return numSerie;
+	}
 
-    @objid ("b02f707e-0214-4ad1-8590-a609f2a23bf6")
-    public double getPrix() {
-        return prix;
-    }
 
-    @objid ("6b6677eb-f69d-4745-b1b5-ec1b51f4c08c")
-    public void setPrix(float nouveauPrix) {
-        this.prix = nouveauPrix;
-    }
+	public void setNumSerie(String numSerie) {
+		this.numSerie = numSerie;
+	}
 
-    public boolean correspond(PrefGuitare prefGuitare) {
+
+	public double getPrix() {
+		return prix;
+	}
+
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+
+	public boolean correspond(PrefGuitare prefGuitare) {
     
        if (preferences.equals(prefGuitare))
             return true;

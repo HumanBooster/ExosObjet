@@ -7,6 +7,16 @@ public class PrefGuitare {
 	@objid("0a3b98ec-d24f-4def-a630-a8456ee53518")
 	private String modele;
 
+
+	@objid("8391edd9-e5bc-4886-b0eb-19970feee0ba")
+	private Bois boisFond;
+
+	@objid("4d873648-5846-43fd-a18f-02ae044b8f62")
+	private Bois boisTable;
+
+	@objid("baa7ca85-ff3b-4858-8ddf-ebf0d8eb9add")
+	private Type type;
+	
 	public Fabricant getFabricant() {
 		return fabricant;
 	}
@@ -47,14 +57,6 @@ public class PrefGuitare {
 		this.type = type;
 	}
 
-	@objid("8391edd9-e5bc-4886-b0eb-19970feee0ba")
-	private Bois boisFond;
-
-	@objid("4d873648-5846-43fd-a18f-02ae044b8f62")
-	private Bois boisTable;
-
-	@objid("baa7ca85-ff3b-4858-8ddf-ebf0d8eb9add")
-	private Type type;
 
 	public PrefGuitare(Fabricant fabricant, String modele, Type type,
 			Bois boisFond, Bois boisTable) {
