@@ -9,6 +9,8 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 public class Trappe {
 	@objid("2dbb90ae-1c1c-4771-baa0-445586ed3a8f")
 	private boolean ouverte;
+	
+	Timer timer;
 
 	public Trappe() {
 		this.ouverte = false;
@@ -34,12 +36,10 @@ public class Trappe {
 		// on déclare un nouveau timer
 		// (final permet d'accéder à des variables de trappe à l'intérieur de la
 		// classe)
-		final Timer timer = new Timer();
+		timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
 				fermer();
-				// le cancel optimise la gestion de la mémoire
-				timer.cancel();
 			}
 		}, 5000); // 60000 est en ms = 1 minute
 	}
@@ -48,6 +48,7 @@ public class Trappe {
 	public void fermer() {
 		System.out.println("La trappe se ferme.");
 		ouverte = false;
+		timer.cancel();
 	}
 
 }
