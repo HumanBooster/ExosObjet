@@ -8,9 +8,14 @@ public class DetecteurWaf {
 		this.trappe = trappe;
 	}
 
+	public void detecter(Waf waf) {
+		System.out.println("[Détecté] : " + waf.getSon());
+		trappe.notifier(waf);
+	}
+	
+	// surcharge pour marcher avec des strings
 	public void detecter(String waf) {
-		System.out.println("[Détecté] : " + waf);
-		trappe.ouvrir();
+		detecter(new Waf(waf));
 	}
 	
 }
