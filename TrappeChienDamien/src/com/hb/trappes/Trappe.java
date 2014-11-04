@@ -13,7 +13,7 @@ public class Trappe {
 	Timer timer;
 
 	public Trappe() {
-		this.ouverte = false;
+		this.ouverte = true;
 	}
 
 	@objid("edbbe32a-c7b9-48ec-9a99-ea097b069470")
@@ -48,7 +48,8 @@ public class Trappe {
 	public void fermer() {
 		System.out.println("La trappe se ferme.");
 		ouverte = false;
-		timer.cancel();
+		if (timer!=null) // requis si l'appli est initialisé avec une trappe ouverte
+			timer.cancel();
 	}
 
 }
