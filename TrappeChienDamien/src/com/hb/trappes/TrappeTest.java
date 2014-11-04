@@ -1,10 +1,6 @@
 package com.hb.trappes;
 
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-@objid ("a418918f-466a-484b-b232-b97cf2126871")
 public class TrappeTest {
-    @objid ("5a9f3fdb-5d5a-482a-8156-c57d8ae3f425")
     public static void main(String[] args) {
         Trappe trappe = new Trappe();
         Telecommande telecommande = new Telecommande(trappe);
