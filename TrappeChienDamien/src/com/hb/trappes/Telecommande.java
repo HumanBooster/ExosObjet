@@ -15,11 +15,7 @@ public class Telecommande {
     @objid ("04a8cbb0-eeeb-4fc6-991e-1cb98575f395")
     public void presserBouton() {
         System.out.println("Le bouton de la télécommande est pressé.");
-        if (trappe.isOuverte()) {
-            trappe.fermer();
-        } else {
-            trappe.ouvrir();
-        }
+        trappe.toggle();
     }
 
 }

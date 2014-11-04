@@ -13,13 +13,16 @@ public class TrappeTest {
         
         System.out.println("On appuie sur la télécommande.");
         telecommande.presserBouton();
+
+        telecommande.presserBouton();
         
         System.out.println("Fido sort.");
         
-        System.out.println("Fido fait ce qu'il a à faire.");
+        try {
+        	Thread.currentThread().sleep(10000);
+        } catch (InterruptedException e) { }
         
-        System.out.println("On appuie sur la télécommande.");
-        telecommande.presserBouton();
+        System.out.println("Fido fait ce qu'il a à faire.");
         
         System.out.println("Fido aboit et veut rentrer.");
         
@@ -27,9 +30,6 @@ public class TrappeTest {
         telecommande.presserBouton();
         
         System.out.println("Fido rentre.");
-        
-        System.out.println("On appuie sur la télécommande.");
-        telecommande.presserBouton();
     }
 
 }
