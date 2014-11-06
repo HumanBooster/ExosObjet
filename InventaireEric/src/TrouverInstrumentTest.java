@@ -1,34 +1,32 @@
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-@objid ("5670d192-883f-4459-ac39-05784e485124")
 public class TrouverInstrumentTest {
-    @objid ("49e190fb-312a-4b6d-b34f-5913757d83da")
     public static void main(String[] args) {
         // Dresse l’inventaire des Guitares d’Éric
         Inventaire inventaire = new Inventaire();
         
         initialiserInventaire(inventaire);
         
-        PrefMandoline prefIrene = new PrefMandoline(Fabricant.FENDER,
-                "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, Style.A);
-        //PrefGuitare prefIrene = new PrefGuitare(Fabricant.FENDER,
-         //       "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6);
-                
+        Map<Propriete,Object> proprietes = new HashMap<Propriete,Object>();
+        proprietes.put(Propriete.FABRICANT, Fabricant.FENDER);
+        proprietes.put(Propriete.BOISFOND, Bois.AULNE);
+        proprietes.put(Propriete.INSTRUMENT, TypeInstrument.BANJO);
+        
+        PrefInstrument prefIrene = new PrefInstrument(proprietes);
+        
         List<Instrument> resultats = inventaire.chercher(prefIrene);
         
-        if (resultats != null) {
+        if (!resultats.isEmpty()) {
     		for (Iterator<Instrument> i = resultats.iterator(); i.hasNext();) {
     			Instrument instrument = i.next();
     			
     			System.out.println("On examine : "+instrument.toString());
             
     			System.out.println("Irène,peut-être aimerez-vous cette "+instrument.getClass().getName()+" : " +
-    					instrument.getPreferences().getBoisFond() + " pour le corps,\n " +
-    					instrument.getPreferences().getBoisTable()
-                    + " pour la table.\n Elle est à vous pour seulement " +
+    					"\n Elle est à vous pour seulement " +
                     instrument.getPrix() + " € !");
     		}
         } else {
@@ -36,12 +34,59 @@ public class TrouverInstrumentTest {
         }
     }
 
-    @objid ("e679b768-9d00-4f1e-9b19-a5736b70cdb5")
     private static void initialiserInventaire(Inventaire inventaire) {
         // Ajoute des guitares dans l’inventaire...
-    	inventaire.addInstrument("V95693", 1499.90, new PrefGuitare(Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6));
-    	inventaire.addInstrument("V95683", 1399.90, new PrefMandoline(Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, Style.A));
-    	inventaire.addInstrument("V95683", 1399.90, new PrefBanjo(Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 5));
+    	
+    	Map<Propriete, Object> proprietes;
+    	
+    	proprietes = new HashMap<Propriete, Object>();
+    	proprietes.put(Propriete.INSTRUMENT, TypeInstrument.GUITARE);
+    	proprietes.put(Propriete.FABRICANT, Fabricant.GIBSON);
+    	proprietes.put(Propriete.MODELE, "CJ");
+    	proprietes.put(Propriete.TYPE, Type.ACOUSTIQUE);
+    	proprietes.put(Propriete.NBCORDES, 6);
+    	proprietes.put(Propriete.BOISTABLE, Bois.CHENE);
+    	proprietes.put(Propriete.BOISFOND, Bois.OLIVIER);
+    	
+    	inventaire.addInstrument("A", 3999.95,
+    			new PrefInstrument(proprietes));
+    	
+    	proprietes = new HashMap<Propriete, Object>();
+    	proprietes.put(Propriete.INSTRUMENT, TypeInstrument.MANDOLINE);
+    	proprietes.put(Propriete.FABRICANT, Fabricant.FENDER);
+    	proprietes.put(Propriete.MODELE, "CJSUPERF");
+    	proprietes.put(Propriete.TYPE, Type.ACOUSTIQUE);
+    	proprietes.put(Propriete.STYLE, Style.F);
+    	proprietes.put(Propriete.BOISTABLE, Bois.CHENE);
+    	proprietes.put(Propriete.BOISFOND, Bois.OLIVIER);
+    	
+    	inventaire.addInstrument("B", 3399.90,
+    			new PrefInstrument(proprietes));
+    	
+    	proprietes = new HashMap<Propriete, Object>();
+    	proprietes.put(Propriete.INSTRUMENT, TypeInstrument.MANDOLINE);
+    	proprietes.put(Propriete.FABRICANT, Fabricant.FENDER);
+    	proprietes.put(Propriete.MODELE, "CJSUPERF");
+    	proprietes.put(Propriete.TYPE, Type.ACOUSTIQUE);
+    	proprietes.put(Propriete.STYLE, Style.F);
+    	proprietes.put(Propriete.BOISTABLE, Bois.CHENE);
+    	proprietes.put(Propriete.BOISFOND, Bois.AULNE);
+    	
+    	inventaire.addInstrument("C", 2399.90,
+    			new PrefInstrument(proprietes));
+
+    	proprietes = new HashMap<Propriete, Object>();
+    	proprietes.put(Propriete.INSTRUMENT, TypeInstrument.BANJO);
+    	proprietes.put(Propriete.FABRICANT, Fabricant.FENDER);
+    	proprietes.put(Propriete.MODELE, "BANJOLOL");
+    	proprietes.put(Propriete.TYPE, Type.ACOUSTIQUE);
+    	proprietes.put(Propriete.NBCORDES, 5);
+    	proprietes.put(Propriete.BOISTABLE, Bois.CHENE);
+    	proprietes.put(Propriete.BOISFOND, Bois.AULNE);
+    	
+    	inventaire.addInstrument("D", 1399.90,
+    			new PrefInstrument(proprietes));
+    	
     }
 
 }
