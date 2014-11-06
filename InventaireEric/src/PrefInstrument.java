@@ -1,7 +1,7 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("3bac70a8-a1d0-4588-aa56-ce6a0f4a27d1")
-public abstract class PrefInstrument {
+public class PrefInstrument {
     @objid ("0a3b98ec-d24f-4def-a630-a8456ee53518")
     protected String modele;
 

@@ -41,49 +41,20 @@ public class Inventaire {
     }
 
     @objid ("5799b264-50ce-4ee9-8d0e-5e83224d56d0")
-    public List<Instrument> chercher(PrefGuitare preferences) {
-    	System.out.println("On cherche une Guitare");
+    public List<Instrument> chercher(PrefInstrument preferences) {
+    	System.out.println("On cherche un Instrument");
         List<Instrument> resultats = new ArrayList<Instrument>();
         
         for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
         	Instrument instrument = i.next();
         
             if (instrument.getPreferences().equals(preferences)) {
-            	System.out.println("Trouvé une "+instrument.getClass().getName());
+            	System.out.println("Trouvé un(e) "+instrument.getClass().getName());
             	resultats.add(instrument) ;
             }
                 
         }
         return resultats;
     }
-    
-    public List<Instrument> chercher(PrefMandoline preferences) {
-    	System.out.println("On cherche une Mandoline");
-        List<Instrument> resultats = new ArrayList<Instrument>();
-        
-        for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
-        	Instrument instrument = i.next();
-        
-            if (instrument.getPreferences().equals(preferences)) {
-            	System.out.println("Trouvé une "+instrument.getClass().getName());
-                resultats.add(instrument) ;
-            }
-        }
-        return resultats;
-    }
-    
-    public List<Instrument> chercher(PrefBanjo preferences) {
-    	System.out.println("On cherche un Banjo");
-        List<Instrument> resultats = new ArrayList<Instrument>();
-        
-        for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
-        	Instrument instrument = i.next();
-        
-            if (instrument.getPreferences().equals(preferences)) {
-            	System.out.println("Trouvé une "+instrument.getClass().getName());
-                resultats.add(instrument) ;
-            }
-        }
-        return resultats;
-    }
+   
 }
