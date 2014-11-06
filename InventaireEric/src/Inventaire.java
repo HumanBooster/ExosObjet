@@ -21,6 +21,8 @@ public class Inventaire {
             instrument = new Guitare(numSerie, prix, (PrefGuitare) preferences);
     	} else if (preferences instanceof PrefMandoline) {
     		instrument = new Mandoline(numSerie, prix, (PrefMandoline) preferences);
+    	} else if (preferences instanceof PrefBanjo) {
+    		instrument = new Banjo(numSerie, prix, (PrefBanjo) preferences);
     	}
         instruments.add(instrument);
     }
@@ -57,6 +59,21 @@ public class Inventaire {
     
     public List<Instrument> chercher(PrefMandoline preferences) {
     	System.out.println("On cherche une Mandoline");
+        List<Instrument> resultats = new ArrayList<Instrument>();
+        
+        for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
+        	Instrument instrument = i.next();
+        
+            if (instrument.getPreferences().equals(preferences)) {
+            	System.out.println("Trouvé une "+instrument.getClass().getName());
+                resultats.add(instrument) ;
+            }
+        }
+        return resultats;
+    }
+    
+    public List<Instrument> chercher(PrefBanjo preferences) {
+    	System.out.println("On cherche un Banjo");
         List<Instrument> resultats = new ArrayList<Instrument>();
         
         for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {

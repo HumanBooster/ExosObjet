@@ -12,9 +12,11 @@ public class TrouverInstrumentTest {
         
         initialiserInventaire(inventaire);
         
-        PrefGuitare prefIrene = new PrefGuitare(Fabricant.FENDER,
-                "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6);
-        
+        PrefMandoline prefIrene = new PrefMandoline(Fabricant.FENDER,
+                "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, Style.A);
+        //PrefGuitare prefIrene = new PrefGuitare(Fabricant.FENDER,
+         //       "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6);
+                
         List<Instrument> resultats = inventaire.chercher(prefIrene);
         
         if (resultats != null) {
@@ -39,6 +41,7 @@ public class TrouverInstrumentTest {
         // Ajoute des guitares dans l’inventaire...
     	inventaire.addInstrument("V95693", 1499.90, new PrefGuitare(Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 6));
     	inventaire.addInstrument("V95683", 1399.90, new PrefMandoline(Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, Style.A));
+    	inventaire.addInstrument("V95683", 1399.90, new PrefBanjo(Fabricant.FENDER, "Stratocaster", Type.ELECTRIQUE, Bois.AULNE, Bois.AULNE, 5));
     }
 
 }
