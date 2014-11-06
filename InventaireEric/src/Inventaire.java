@@ -1,58 +1,75 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-@objid("873f5c84-c214-4988-b181-667fda1e3907")
+@objid ("873f5c84-c214-4988-b181-667fda1e3907")
 public class Inventaire {
-	@objid("5283c993-f632-4172-b552-79a70bbde490")
-	private List<Guitare> guitares;
+    @objid ("5283c993-f632-4172-b552-79a70bbde490")
+    private List<Instrument> instruments;
 
-	@objid("36abb9ad-f220-4336-a620-70306095e28f")
-	public Inventaire() {
-		guitares = new ArrayList<Guitare>();
-	}
+    @objid ("36abb9ad-f220-4336-a620-70306095e28f")
+    public Inventaire() {
+    	instruments = new ArrayList<Instrument>();
+    }
 
-	@objid("820b0092-e6be-4d85-b6b3-735fd1d39cf1")
-	public void addGuitare(String numSerie, double prix, Fabricant fabricant,
-			String modele, Type type, Bois boisFond, Bois boisTable, int nbCordes) {
-		
-		PrefGuitare prefGuitare = new PrefGuitare(fabricant, modele, type,
-				boisFond, boisTable, nbCordes);
-		Guitare guitare = new Guitare(numSerie, prix, prefGuitare);
-		guitares.add(guitare);
-	}
-	
-	public void addGuitare(String numSerie, double prix, PrefGuitare prefGuitare) {
-		Guitare guitare = new Guitare(numSerie, prix, prefGuitare);
-		guitares.add(guitare);
-	}
+    @objid ("820b0092-e6be-4d85-b6b3-735fd1d39cf1")
+    public void addInstrument(String numSerie, double prix, PrefInstrument preferences) {
+        
+    	Instrument instrument;
+    	if (preferences instanceof PrefGuitare) {
+            instrument = new Guitare(numSerie, prix, (PrefGuitare) preferences);
+    	} else if (preferences instanceof PrefMandoline) {
+    		instrument = new Mandoline(numSerie, prix, (PrefMandoline) preferences);
+    	} else {
+    		instrument = null;
+    	}
 
-	@objid("a3782776-fc9b-47ad-9176-3792f0d25b93")
-	public Guitare getGuitare(String numSerie) {
-		for (Iterator<Guitare> i = guitares.iterator(); i.hasNext();) {
-			Guitare guitare = i.next();
+        instruments.add(instrument);
+    }
 
-			if (guitare.getNumSerie().equals(numSerie)) {
-				return guitare;
-			}
+    @objid ("a3782776-fc9b-47ad-9176-3792f0d25b93")
+    public Instrument getInstrument(String numSerie) {
+        for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
+        	Instrument instrument = i.next();
+        
+            if (instrument.getNumSerie().equals(numSerie)) {
+                return instrument;
+            }
+        
+        }
+        return null;
+    }
 
-		}
-		return null;
-	}
-
-	@objid("5799b264-50ce-4ee9-8d0e-5e83224d56d0")
-	public List<Guitare> chercher(PrefGuitare prefGuitare) {
-		List<Guitare> resultats = new ArrayList<Guitare>();
-		
-		for (Iterator<Guitare> i = guitares.iterator(); i.hasNext();) {
-			Guitare guitare = i.next();
-
-			if (guitare.correspond(prefGuitare))
-				resultats.add(guitare) ;
-		}
-		return resultats;
-	}
-
+    @objid ("5799b264-50ce-4ee9-8d0e-5e83224d56d0")
+    public List<Instrument> chercher(PrefGuitare preferences) {
+    	System.out.println("On cherche une Guitare");
+        List<Instrument> resultats = new ArrayList<Instrument>();
+        
+        for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
+        	Instrument instrument = i.next();
+        
+            if (instrument.correspond(preferences)) {
+            	System.out.println("Trouvé une "+instrument.getClass().getName());
+            	resultats.add(instrument) ;
+            }
+                
+        }
+        return resultats;
+    }
+    
+    public List<Instrument> chercher(PrefMandoline preferences) {
+    	System.out.println("On cherche une Mandoline");
+        List<Instrument> resultats = new ArrayList<Instrument>();
+        
+        for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
+        	Instrument instrument = i.next();
+        
+            if (instrument.correspond(preferences)) {
+            	System.out.println("Trouvé une "+instrument.getClass().getName());
+                resultats.add(instrument) ;
+            }
+        }
+        return resultats;
+    }
 }

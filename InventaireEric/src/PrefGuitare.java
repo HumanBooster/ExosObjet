@@ -1,104 +1,43 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-public class PrefGuitare {
-	@objid("fcd5eff8-78ee-485a-b42b-90f780b93c09")
-	private Fabricant fabricant;
+@objid ("2dab4d9f-21d6-4dd1-b5ed-26b0dec15fde")
+public class PrefGuitare extends PrefInstrument {
+    @objid ("8d11616e-5c6b-423b-98b9-11a2932ac1b1")
+    private int nbCordes;
 
-	@objid("0a3b98ec-d24f-4def-a630-a8456ee53518")
-	private String modele;
+    @objid ("0e4d9b46-86be-48a8-bf87-b85e79bd3ffb")
+    public PrefGuitare(Fabricant fabricant, String modele, Type type, Bois boisFond, Bois boisTable, int nbCordes) {
+        super(fabricant, modele, type, boisFond, boisTable);
+        this.nbCordes = nbCordes;
+    }
 
+    @objid ("f98d24fa-e4fc-4fe3-915b-dcf790f43fe1")
+    public boolean equals(PrefInstrument prefGuitare) {
+        System.out.println("On compare le nombre de cordes...");
+        if (this == prefGuitare) {
+            return true;
+        }
+        
+        if (!(prefGuitare instanceof PrefGuitare))
+        	return false;
+        
+        if (!super.equals(prefGuitare))
+        	return false;
+        
+        PrefGuitare pref = (PrefGuitare) prefGuitare;
+        if (!(nbCordes == pref.getNbCordes()))
+            return false;
+        return true;
+    }
 
-	@objid("8391edd9-e5bc-4886-b0eb-19970feee0ba")
-	private Bois boisFond;
+    @objid ("ef9b4517-9897-4522-b99e-0397a371e1c7")
+    public int getNbCordes() {
+        return nbCordes;
+    }
 
-	@objid("4d873648-5846-43fd-a18f-02ae044b8f62")
-	private Bois boisTable;
+    @objid ("5b5d8ff9-dac3-4be9-b9e5-099d5a48dc97")
+    public void setNbCordes(int nbCordes) {
+        this.nbCordes = nbCordes;
+    }
 
-	@objid("baa7ca85-ff3b-4858-8ddf-ebf0d8eb9add")
-	private Type type;
-	
-	private int nbCordes;
-
-	public PrefGuitare(Fabricant fabricant, String modele, Type type,
-			Bois boisFond, Bois boisTable, int nbCordes) {
-		this.fabricant = fabricant;
-		this.modele = modele;
-		this.type = type;
-		this.boisFond = boisFond;
-		this.boisTable = boisTable;
-		this.nbCordes = nbCordes;
-	}
-
-	public boolean equals(PrefGuitare prefGuitare) {
-
-		if (this == prefGuitare) {
-			return true;
-		}
-
-		if ((modele != null) && (!modele.equals(""))
-				&& (!modele.equalsIgnoreCase(prefGuitare.getModele())))
-			return false;
-		
-		if (!type.equals(prefGuitare.getType()))
-			return false;
-
-		if (!boisFond.equals(prefGuitare.getBoisFond()))
-			return false;
-
-		if (!boisTable.equals(prefGuitare.getBoisTable()))
-			return false;
-		
-		if (!(nbCordes == prefGuitare.getNbCordes()))
-			return false;
-
-		return true;
-	}
-	
-	public Fabricant getFabricant() {
-		return fabricant;
-	}
-
-	public void setFabricant(Fabricant fabricant) {
-		this.fabricant = fabricant;
-	}
-
-	public String getModele() {
-		return modele;
-	}
-
-	public void setModele(String modele) {
-		this.modele = modele;
-	}
-
-	public Bois getBoisFond() {
-		return boisFond;
-	}
-
-	public void setBoisFond(Bois boisFond) {
-		this.boisFond = boisFond;
-	}
-
-	public Bois getBoisTable() {
-		return boisTable;
-	}
-
-	public void setBoisTable(Bois boisTable) {
-		this.boisTable = boisTable;
-	}
-
-	public Type getType() {
-		return type;
-	}
-
-	public void setType(Type type) {
-		this.type = type;
-	}
-
-	public int getNbCordes() {
-		return nbCordes;
-	}
-
-	public void setNbCordes(int nbCordes) {
-		this.nbCordes = nbCordes;
-	}
 }
