@@ -16,15 +16,12 @@ public class Inventaire {
     @objid ("820b0092-e6be-4d85-b6b3-735fd1d39cf1")
     public void addInstrument(String numSerie, double prix, PrefInstrument preferences) {
         
-    	Instrument instrument;
+    	Instrument instrument = null;
     	if (preferences instanceof PrefGuitare) {
             instrument = new Guitare(numSerie, prix, (PrefGuitare) preferences);
     	} else if (preferences instanceof PrefMandoline) {
     		instrument = new Mandoline(numSerie, prix, (PrefMandoline) preferences);
-    	} else {
-    		instrument = null;
     	}
-
         instruments.add(instrument);
     }
 
@@ -49,7 +46,7 @@ public class Inventaire {
         for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
         	Instrument instrument = i.next();
         
-            if (instrument.correspond(preferences)) {
+            if (instrument.getPreferences().equals(preferences)) {
             	System.out.println("Trouvé une "+instrument.getClass().getName());
             	resultats.add(instrument) ;
             }
@@ -65,7 +62,7 @@ public class Inventaire {
         for (Iterator<Instrument> i = instruments.iterator(); i.hasNext();) {
         	Instrument instrument = i.next();
         
-            if (instrument.correspond(preferences)) {
+            if (instrument.getPreferences().equals(preferences)) {
             	System.out.println("Trouvé une "+instrument.getClass().getName());
                 resultats.add(instrument) ;
             }

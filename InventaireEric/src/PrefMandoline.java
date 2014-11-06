@@ -10,11 +10,6 @@ public class PrefMandoline extends PrefInstrument {
 		super(fabricant, modele, type, boisFond, boisTable);
 		this.style = style;
 	}
-    
-    @objid ("97d1f825-a530-435a-8742-029b3e411f86")
-    public Style getStyle() {
-		return style;
-    }
 
     @objid ("d18bb296-80f2-4948-9a2b-13132520b580")
     public boolean equals(PrefInstrument prefMandoline) {
@@ -38,6 +33,12 @@ public class PrefMandoline extends PrefInstrument {
         return true;
     }
 
+    
+    @objid ("97d1f825-a530-435a-8742-029b3e411f86")
+    public Style getStyle() {
+		return style;
+    }
+    
     @objid ("72aed268-72c2-486a-8bb8-227406f754c8")
     public void setStyle(Style style) {
     	this.style = style;

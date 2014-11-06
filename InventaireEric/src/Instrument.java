@@ -3,13 +3,19 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 @objid ("d57b87ec-de1b-4846-a3ff-75869b7df315")
 public abstract class Instrument {
     @objid ("1087d2fe-e5d8-4db6-b58a-ddb0f8ddecb7")
-    protected String numSerie;
+    private String numSerie;
 
     @objid ("ae607fb3-b0e3-4274-8f39-73066c7bd839")
-    protected double prix;
+    private double prix;
 
     @objid ("7926fa2a-f6d9-4ce1-a87c-35114db7782e")
-    protected PrefInstrument preferences;
+    private PrefInstrument preferences;
+    
+    public Instrument(String numSerie, double prix, PrefInstrument pref) {
+    	this.numSerie = numSerie;
+    	this.prix = prix;
+    	this.preferences = pref;
+    }
 
     @objid ("cfb89fd5-48e2-433f-aa42-f6b1aa61ae9d")
     public String getNumSerie() {
@@ -37,10 +43,12 @@ public abstract class Instrument {
     }
 
     @objid ("11953fa4-e82b-41af-832a-853ef6cf9971")
-    public abstract PrefInstrument getPreferences();
+    public PrefInstrument getPreferences() {
+    	return this.preferences;
+    }
 
     @objid ("fbaed1cc-6635-4137-b2c9-2d98a7b13af6")
-    public abstract boolean correspond(PrefInstrument preferences);
+    //public abstract boolean correspond(PrefInstrument preferences);
     
     public String toString() {
     	return "Instrument de type "+this.getClass().getName()+" \n"
