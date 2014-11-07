@@ -1,6 +1,10 @@
+package com.hb.inventaire;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import com.hb.inventaire.enums.Propriete;
 
 public class PrefInstrument {
 	Map<Propriete,Object> proprietes;

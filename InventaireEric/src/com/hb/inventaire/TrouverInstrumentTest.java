@@ -1,7 +1,16 @@
+package com.hb.inventaire;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import com.hb.inventaire.enums.Bois;
+import com.hb.inventaire.enums.Fabricant;
+import com.hb.inventaire.enums.Propriete;
+import com.hb.inventaire.enums.Style;
+import com.hb.inventaire.enums.Type;
+import com.hb.inventaire.enums.TypeInstrument;
 
 public class TrouverInstrumentTest {
     public static void main(String[] args) {

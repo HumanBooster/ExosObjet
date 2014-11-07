@@ -1,3 +1,5 @@
+package com.hb.inventaire.enums;
+
 public enum TypeInstrument {
 	GUITARE, MANDOLINE, BANJO;
 

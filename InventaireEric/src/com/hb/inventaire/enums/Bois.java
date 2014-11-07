@@ -1,3 +1,4 @@
+package com.hb.inventaire.enums;
 
 public enum Bois {
     AULNE,

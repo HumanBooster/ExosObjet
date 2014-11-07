@@ -1,3 +1,4 @@
+package com.hb.inventaire;
 
 public class Instrument {
     private String numSerie;

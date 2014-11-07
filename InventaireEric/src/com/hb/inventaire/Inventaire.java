@@ -1,6 +1,10 @@
+package com.hb.inventaire;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import com.hb.inventaire.enums.Propriete;
 
 
 public class Inventaire {
@@ -37,7 +41,7 @@ public class Inventaire {
         
             if (instrument.getPreferences().correspond(preferences)) {
             	System.out.println("Trouvé un(e) "+instrument.getPreferences().getPropriete(Propriete.INSTRUMENT));
-            	resultats.add(instrument) ;
+            	resultats.add(instrument);
             }
                 
         }
