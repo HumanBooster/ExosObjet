@@ -1,17 +1,17 @@
 package com.hb.inventaire.enums;
 
 public enum Fabricant {
-    FENDER,
-    GIBSON;
+    FENDER("Fender"),
+    GIBSON("Gibson");
+    
+    String libelle;
+    
+    Fabricant(String libelle) {
+    	this.libelle = libelle;
+    }
 
     public String toString() {
-        switch (this) {
-        case FENDER:
-            return "Fender";
-        case GIBSON:
-            return "Gibson";
-        default: return "";
-        }
+        return this.libelle;
     }
 
 }

@@ -15,9 +15,11 @@ public class Inventaire {
     }
 
     public void addInstrument(String numSerie, double prix, PrefInstrument preferences) {
-        
-    	Instrument instrument = new Instrument(numSerie, prix, preferences);
-        instruments.add(instrument);
+        instruments.add(InstrumentFactory.makeInstrument(numSerie, prix, preferences));
+    }
+    
+    public void addInstrument(Instrument instrument) {
+    	instruments.add(instrument);
     }
 
     public Instrument getInstrument(String numSerie) {

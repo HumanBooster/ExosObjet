@@ -1,23 +1,21 @@
 package com.hb.inventaire.enums;
 
 public enum Bois {
-    AULNE,
-    FRENE,
-    OLIVIER,
-    CHENE;
+    AULNE("aulne"),
+    FRENE("frêne"),
+    OLIVIER("olivier"),
+    CHENE("chêne"),
+    PALISSANDRE("pallissandre"),
+    CERISIER("cerisier");
+    
+    String libelle;
+    
+    Bois(String libelle) {
+    	this.libelle = libelle;
+    }
 
     public String toString() {
-        switch (this) {
-        case AULNE:
-            return "Aulne";
-        case FRENE:
-            return "Frêne";
-        case OLIVIER:
-            return "Olivier";
-        case CHENE:
-            return "Chêne";
-        default: return "";
-        }
+        return this.libelle;
     }
 
 }

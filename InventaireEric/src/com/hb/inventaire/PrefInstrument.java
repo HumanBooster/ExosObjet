@@ -7,6 +7,7 @@ import java.util.Map;
 import com.hb.inventaire.enums.Propriete;
 
 public class PrefInstrument {
+	
 	Map<Propriete,Object> proprietes;
     
     public PrefInstrument(Map<Propriete,Object> proprietes) {
@@ -21,7 +22,7 @@ public class PrefInstrument {
         return proprietes.get(prop);
     }
 
-    public Map<Propriete,?> getProprietes() {
+    public Map<Propriete,Object> getProprietes() {
     	return proprietes;
     }
 
@@ -34,6 +35,8 @@ public class PrefInstrument {
         		i.hasNext(); ) {
         	Propriete prop = i.next();
         	
+        	// test nullpointer
+        	
         	if (!proprietes.get(prop).equals(prefInstrument.getPropriete(prop)))
         		return false;
         	
@@ -43,7 +46,15 @@ public class PrefInstrument {
     }
     
     public String toString() {
-    	return getClass().getName();
+    	String string = "";
+    	
+        for (Iterator<Propriete> i = this.getProprietes().keySet().iterator();
+        		i.hasNext(); ) {
+        	Propriete prop = i.next();
+        	
+        	string += prop+": "+proprietes.get(prop)+"\n";
+        } 
+    	return string;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.hb.inventaire;
 
+import com.hb.inventaire.enums.Propriete;
+
 public class Instrument {
     private String numSerie;
     private double prix;
@@ -36,7 +38,7 @@ public class Instrument {
     }
     
     public String toString() {
-    	return "Instrument de type "+this.getClass().getName()+" \n"
+    	return "Instrument de type "+this.getPreferences().getPropriete(Propriete.INSTRUMENT)+" \n"
     			+"Prix : "+this.prix+" / numSerie : "+this.numSerie+"\n"
     			+this.getPreferences().toString();
     }

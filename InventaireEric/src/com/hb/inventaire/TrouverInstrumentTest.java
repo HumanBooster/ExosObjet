@@ -20,9 +20,9 @@ public class TrouverInstrumentTest {
         initialiserInventaire(inventaire);
         
         Map<Propriete,Object> proprietes = new HashMap<Propriete,Object>();
-        proprietes.put(Propriete.FABRICANT, Fabricant.FENDER);
-        proprietes.put(Propriete.BOISFOND, Bois.AULNE);
-        proprietes.put(Propriete.INSTRUMENT, TypeInstrument.BANJO);
+        //proprietes.put(Propriete.FABRICANT, Fabricant.FENDER);
+        //proprietes.put(Propriete.BOISFOND, Bois.AULNE);
+        proprietes.put(Propriete.INSTRUMENT, TypeInstrument.GUITARE);
         
         PrefInstrument prefIrene = new PrefInstrument(proprietes);
         
@@ -31,12 +31,9 @@ public class TrouverInstrumentTest {
         if (!resultats.isEmpty()) {
     		for (Iterator<Instrument> i = resultats.iterator(); i.hasNext();) {
     			Instrument instrument = i.next();
-    			
-    			System.out.println("On examine : "+instrument.toString());
             
-    			System.out.println("Irène,peut-être aimerez-vous cette "+instrument.getClass().getName()+" : " +
-    					"\n Elle est à vous pour seulement " +
-                    instrument.getPrix() + " € !");
+    			System.out.println("Irène,peut-être aimerez-vous ca :\n"
+    					+instrument.toString());
     		}
         } else {
             System.out.println("Désolé, Irène, nous n’avons rien pour vous.");
@@ -45,7 +42,13 @@ public class TrouverInstrumentTest {
 
     private static void initialiserInventaire(Inventaire inventaire) {
         // Ajoute des guitares dans l’inventaire...
-    	
+    	inventaire.addInstrument(
+    			InstrumentFactory.makeGuitare(
+    					"A111", 3999.95, Fabricant.GIBSON, "CJ",
+    					Type.ACOUSTIQUE, Bois.OLIVIER, Bois.CHENE, 6)
+    		);
+    
+    	// code équivalent
     	Map<Propriete, Object> proprietes;
     	
     	proprietes = new HashMap<Propriete, Object>();
@@ -56,10 +59,18 @@ public class TrouverInstrumentTest {
     	proprietes.put(Propriete.NBCORDES, 6);
     	proprietes.put(Propriete.BOISTABLE, Bois.CHENE);
     	proprietes.put(Propriete.BOISFOND, Bois.OLIVIER);
-    	
-    	inventaire.addInstrument("A", 3999.95,
+
+    	inventaire.addInstrument("A112", 3999.95,
     			new PrefInstrument(proprietes));
     	
+    	// raccourci avec makeMandoline
+    	inventaire.addInstrument(
+    			InstrumentFactory.makeMandoline(
+    					"B222", 3399.90, Fabricant.FENDER, "CJSUPERF",
+    					Type.ACOUSTIQUE, Bois.OLIVIER, Bois.CHENE, Style.F)
+    				);
+    	
+    	// équivalent SN différent
     	proprietes = new HashMap<Propriete, Object>();
     	proprietes.put(Propriete.INSTRUMENT, TypeInstrument.MANDOLINE);
     	proprietes.put(Propriete.FABRICANT, Fabricant.FENDER);
@@ -69,7 +80,7 @@ public class TrouverInstrumentTest {
     	proprietes.put(Propriete.BOISTABLE, Bois.CHENE);
     	proprietes.put(Propriete.BOISFOND, Bois.OLIVIER);
     	
-    	inventaire.addInstrument("B", 3399.90,
+    	inventaire.addInstrument("B223", 3399.90,
     			new PrefInstrument(proprietes));
     	
     	proprietes = new HashMap<Propriete, Object>();
